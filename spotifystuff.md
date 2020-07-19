@@ -32,3 +32,40 @@ then
 
 ## Pseudocode/User Flow Diagram:
 
+
+
+## Goals for tuesday:
+Jacob: 
+
+Figure out authentication
+
+make ajax requests
+
+connect the JSON to to the html elements
+
+
+Erika:
+
+work on styling and targeting elements
+research spotify api
+
+Chandler:
+
+testing medie queries
+spice up front end design
+research spotify api
+
+Asia:
+
+
+
+implememt rate this app
+
+
+racecar ideas:
+face recognition api
+play the playlist in app
+voice recognition
+
+
+
