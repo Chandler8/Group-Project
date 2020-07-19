@@ -1,15 +1,168 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p>Hello World!</p>
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Musical Mood Generator!</title>
+   
+    <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="/assets/queries.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    
 
-    <p>New Update</p>
+  </head>
+  <body>
 
-    <p>Chandler has arrived</p>
-</body>
+
+          <!-- Left sided sticky bar that will house the most recently generated playlist -->
+
+    <div class="off-canvas-wrapper">
+      <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+        <div class="off-canvas position-left reveal-for-large" id="my-info" data-off-canvas data-position="left">
+          <div class="row column">
+            <br>
+            <!-- GIF to go here -->
+            <img class="thumbnail" src="https://placehold.it/550x350">
+            <!-- Songs generated here -->
+            <h5>Happy</h5>
+            <table class="stack">
+                <thead>
+                    <tr>
+                      <th width="150">Song</th>
+                      <th width="150">Artist</th>
+                      <th width="150">Playlist</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Happy</td>
+                      <td>Pharrell Williams</td>
+                      <td>Unknown</td>
+                    </tr>
+                    <tr>
+                      <td>Song</td>
+                      <td>Artist</td>
+                      <td>Playlist</td>
+                    </tr>
+                    <tr>
+                      <td>Song</td>
+                      <td>Artist</td>
+                      <td>Playlist</td>
+                    </tr>
+                  </tbody>
+            </table>
+          </div>
+        </div>
+            <div class="off-canvas-content" data-off-canvas-content>
+          <div class="title-bar hide-for-large">
+            <div class="title-bar-left">
+              <button class="menu-icon" type="button" data-open="my-info"></button>
+              <span class="title-bar-title">Mike Mikerson</span>
+            </div>
+          </div>
+          
+          <!-- Main header that contains instructions and the submit button with the selected mood -->
+          <div class="callout primary">
+            <div class="row column">
+              <h1>Hello and Welcome to Musical Mood Generator!</h1>
+              <p class="lead">Please use the options at the bottom of the page to choose your current mood from the dropdown menu.
+                Your given mood will then randomly generate a personalized playlist from Spotify that corresponds 
+                to your given mood. You will also find the playlist comes with 
+                a handy-dandy GIF that similiarly corresponds to your mood. You can save up to 8 playlists,
+                happy generating!</p>
+            </div>
+          </div>
+
+        <!-- Section containing the previously generated playlists and GIFS -->
+          <div class="row small-up-2 medium-up-3 large-up-4">
+            <div class="column">
+              <img class="thumbnail" src="https://placehold.it/550x550">
+              <h5>My Site</h5>
+            </div>
+            <div class="column">
+              <img class="thumbnail" src="https://placehold.it/550x550">
+              <h5>My Site</h5>
+            </div>
+            <div class="column">
+              <img class="thumbnail" src="https://placehold.it/550x550">
+              <h5>My Site</h5>
+            </div>
+            <div class="column">
+              <img class="thumbnail" src="https://placehold.it/550x550">
+              <h5>My Site</h5>
+            </div>
+            <div class="column">
+              <img class="thumbnail" src="https://placehold.it/550x550">
+              <h5>My Site</h5>
+            </div>
+            <div class="column">
+              <img class="thumbnail" src="https://placehold.it/550x550">
+              <h5>My Site</h5>
+            </div>
+            <div class="column">
+              <img class="thumbnail" src="https://placehold.it/550x550">
+              <h5>My Site</h5>
+            </div>
+            <div class="column">
+              <img class="thumbnail" src="https://placehold.it/550x550">
+              <h5>My Site</h5>
+            </div>
+          </div>
+
+          <hr>
+
+          <!-- Bottom of page containing the changeable mood options -->
+
+          <div class="row">
+            <div class="medium-6 columns">
+              <h3>Instructions</h3>
+              <p>Selet a mood option from the dropdown menu on your right!
+              </p>
+            
+              <p>Below you will find links to the Repository and APIs</p>
+              <ul class="menu">
+                <li><a href="https://github.com/Chandler8/Group-Project"><i class="fa fa-github" aria-hidden="true"></i>
+                    Github Repository</a></li>
+                <li><a href="https://www.spotify.com/us/"><i class="fa fa-spotify" aria-hidden="true"></i>
+                    Spofity</a></li>
+                <li><a href="https://giphy.com/"><i class="fa fa-picture-o" aria-hidden="true"></i>
+                    GIPHY</a></li>
+              </ul>
+            </div>
+            <div class="medium-6 columns">
+                <label>Select Mood
+                    <select>
+                      <option value="happy">Happy</option>
+                      <option value="sad">Sad</option>
+                      <option value="energetic">Energetic</option>
+                      <option value="aggresive">Aggresive</option>
+                      <option value="relaxed">Relaxed</option>
+                      <option value="sleepy">Sleepy</option>
+                      <option value="classy">Classy</option>
+                      <option value="indifferent">Indifferent</option>
+                    </select>
+                  </label>
+              
+              <input type="submit" class="button expanded" value="Submit">
+            </div>
+          </div>
+
+          <!-- End of UI menu features -->
+
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
 </html>
+
+
+
