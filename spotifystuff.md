@@ -1,3 +1,4 @@
+Requirements:
 2 server-side api's
 css framework thats not bootstrap
 at least one new 3rd party api
@@ -8,7 +9,7 @@ must have github pages
 must be interractive
 
 
-
+## User Story 
 As a user, I want
     -to have music playlists based on my mood
     -to generate a random corresponding gif based on the mood
@@ -28,3 +29,6 @@ then
     - a playlist of songs is generated based on the mood selected
     -a meme is displayed based on the mood selected
     -a list of moods and music 
+
+## Pseudocode/User Flow Diagram:
+
