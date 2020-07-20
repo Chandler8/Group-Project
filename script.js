@@ -1,5 +1,5 @@
-const clientId = 'e385e97bbf0c45b2a800391010d7d594';
-const clientSecret = '574cc1ada15544f78f9964403b0bd9be';
+var clientId = 'e385e97bbf0c45b2a800391010d7d594';
+var clientSecret = '574cc1ada15544f78f9964403b0bd9be';
 var playlist_id = "";
 
 function GetSelectedTextValue(moodDropdown) {
@@ -8,7 +8,6 @@ function GetSelectedTextValue(moodDropdown) {
     console.log(selectedText)
     playlist_id = selectedValue;
     var queryURL = "https://api.spotify.com/v1/playlists/" + playlist_id + "/tracks?offset=0&limit=15";
-    
     tokenFunction();
 
     // POST request to spotify asking for an access token
@@ -56,23 +55,22 @@ function GetSelectedTextValue(moodDropdown) {
                 trackInfo.append(songArtist);
 
                 var songAlbum = $("<td>");
-                songAlbum.text(data.items[i].track.album.name);
+                var albumImg = $("<img>")
+                albumImg.attr("src", data.items[i].track.album.images[1].url)
+                // songAlbum.text(data.items[i].track.album.images[1]);
+                songAlbum.append(albumImg);
                 trackInfo.append(songAlbum);
 
                 songList.append(trackInfo);
-
                 }
-
                 grabGif(selectedText);
             }
         }); 
     } 
-}
+};
 
 function grabGif(selectedText){
-
     var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=GLdAzfFBGkrBeUPV1mQCwztiE7bDfyV5&tag=" + selectedText;
-    console.log(queryURL);
 
     // Perfoming an AJAX GET request to our queryURL
     $.ajax({
