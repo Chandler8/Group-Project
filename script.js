@@ -4,6 +4,8 @@ var playlist_id = "";
 
 function GetSelectedTextValue(moodDropdown) {
     var selectedValue = moodDropdown.value;
+    var selectedText = $(this).text();
+    console.log(selectedText)
     playlist_id = selectedValue;
     var queryURL = "https://api.spotify.com/v1/playlists/" + playlist_id + "/tracks?offset=0&limit=15";
     
@@ -37,7 +39,10 @@ function GetSelectedTextValue(moodDropdown) {
             success: function(data) {
                 console.log(data);
 
-                var songList = $("#songList")            
+                // $("playlistName").text(selectedText);
+
+                var songList = $("#songList") 
+                songList.empty();           
                 
                 for(var i = 0; i<data.items.length; i++){
                 var trackInfo = $("<tr>");
