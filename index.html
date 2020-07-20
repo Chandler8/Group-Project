@@ -133,15 +133,16 @@
             </div>
             <div class="medium-6 columns">
                 <label>Select Mood
-                    <select>
-                      <option value="happy">Happy</option>
-                      <option value="sad">Sad</option>
-                      <option value="energetic">Energetic</option>
-                      <option value="aggresive">Aggresive</option>
-                      <option value="relaxed">Relaxed</option>
-                      <option value="sleepy">Sleepy</option>
-                      <option value="classy">Classy</option>
-                      <option value="indifferent">Indifferent</option>
+                    <select id="moodDropdown" onchange="GetSelectedTextValue(this)">
+                      <option value="">Choose Your Mood</option>
+                      <option value="1h90L3LP8kAJ7KGjCV2Xfd">Happy</option>
+                      <option value="7ABD15iASBIpPP5uJ5awvq">Sad</option>
+                      <option value="2lmcuXNkjYOoQeXvwqvvFT">Energetic</option>
+                      <option value="0kbIVraS3Xa7FhvAb9KSGe">Aggresive</option>
+                      <option value="4vQ0ixS6GKuNV0xMmjfk9j">Relaxed</option>
+                      <option value="6uMZkWBIIY3v1U3G9Stoi4">Sleepy</option>
+                      <option value="50Tl9aaCBX9Ys5kc0DbJeH">Classy</option>
+                      <option value="1hY0i2y7ByRgFkcLHZZdVN">Indifferent</option>
                     </select>
                   </label>
               
@@ -155,9 +156,9 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script src="script.js"></script>
     <script>
       $(document).foundation();
     </script>
