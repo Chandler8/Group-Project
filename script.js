@@ -4,7 +4,7 @@ var playlist_id = "";
 
 function GetSelectedTextValue(moodDropdown) {
     var selectedValue = moodDropdown.value;
-    var selectedText = $(this).text();
+    var selectedText = $("#moodDropdown option:selected").text();
     console.log(selectedText)
     playlist_id = selectedValue;
     var queryURL = "https://api.spotify.com/v1/playlists/" + playlist_id + "/tracks?offset=0&limit=15";
@@ -39,7 +39,7 @@ function GetSelectedTextValue(moodDropdown) {
             success: function(data) {
                 console.log(data);
 
-                // $("playlistName").text(selectedText);
+                $("#playlistName").text(selectedText);
 
                 var songList = $("#songList") 
                 songList.empty();           
@@ -62,9 +62,35 @@ function GetSelectedTextValue(moodDropdown) {
                 songList.append(trackInfo);
 
                 }
+
+                grabGif(selectedText);
             }
         }); 
     } 
+}
+
+function grabGif(selectedText){
+
+    var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=GLdAzfFBGkrBeUPV1mQCwztiE7bDfyV5&tag=" + selectedText;
+    console.log(queryURL);
+
+    // Perfoming an AJAX GET request to our queryURL
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
+
+    // After the data from the AJAX request comes back
+      .then(function(response) {
+
+      // Saving the image_original_url property
+        var imageUrl = response.data.image_original_url;
+       
+        var gifImage = $("#currentGif");
+
+        // Setting the gifImage src attribute to imageUrl
+        gifImage.attr("src", imageUrl);
+      });
 }
     
     
