@@ -39,6 +39,8 @@ function GetSelectedTextValue(moodDropdown) {
                 console.log(data);
 
                 $("#playlistName").text(selectedText);
+                $("#spotLink").attr("href", "https://open.spotify.com/playlist/" + playlist_id);
+                $("#spotLink").text("Listen Now On Spotify!");
 
                 var songList = $("#songList") 
                 songList.empty();           
