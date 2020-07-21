@@ -6,9 +6,9 @@
     <title>Musical Mood Generator!</title>
    
     <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.css">
-    <link rel="stylesheet" href="/assets/queries.css">
     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="/assets/queries.css">
+    <link rel="stylesheet" href="style.css">
     
 
   </head>
@@ -24,34 +24,19 @@
           <div class="row column">
             <br>
             <!-- GIF to go here -->
-            <img class="thumbnail" src="https://placehold.it/550x350">
+            <img class="thumbnail" id="currentGif" src="https://placehold.it/550x350">
             <!-- Songs generated here -->
-            <h5>Happy</h5>
+            <h5 id="playlistName"></h5>
+            <a id="spotLink" href=""></a>
             <table class="stack">
                 <thead>
                     <tr>
                       <th width="150">Song</th>
                       <th width="150">Artist</th>
-                      <th width="150">Playlist</th>
+                      <th width="150">Album</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td>Happy</td>
-                      <td>Pharrell Williams</td>
-                      <td>Unknown</td>
-                    </tr>
-                    <tr>
-                      <td>Song</td>
-                      <td>Artist</td>
-                      <td>Playlist</td>
-                    </tr>
-                    <tr>
-                      <td>Song</td>
-                      <td>Artist</td>
-                      <td>Playlist</td>
-                    </tr>
-                  </tbody>
+                  <tbody id="songList"></tbody>
             </table>
           </div>
         </div>
@@ -133,15 +118,16 @@
             </div>
             <div class="medium-6 columns">
                 <label>Select Mood
-                    <select>
-                      <option value="happy">Happy</option>
-                      <option value="sad">Sad</option>
-                      <option value="energetic">Energetic</option>
-                      <option value="aggresive">Aggresive</option>
-                      <option value="relaxed">Relaxed</option>
-                      <option value="sleepy">Sleepy</option>
-                      <option value="classy">Classy</option>
-                      <option value="indifferent">Indifferent</option>
+                    <select id="moodDropdown" onchange="GetSelectedTextValue(this)">
+                      <option value="2LTA5Jxg19elESWNFYCnij">Choose Your Mood</option>
+                      <option value="1h90L3LP8kAJ7KGjCV2Xfd">Happy</option>
+                      <option value="7ABD15iASBIpPP5uJ5awvq">Sad</option>
+                      <option value="2lmcuXNkjYOoQeXvwqvvFT">Energetic</option>
+                      <option value="0kbIVraS3Xa7FhvAb9KSGe">Aggresive</option>
+                      <option value="4vQ0ixS6GKuNV0xMmjfk9j">Relaxed</option>
+                      <option value="6uMZkWBIIY3v1U3G9Stoi4">Sleepy</option>
+                      <option value="50Tl9aaCBX9Ys5kc0DbJeH">Classy</option>
+                      <option value="1hY0i2y7ByRgFkcLHZZdVN">Indifferent</option>
                     </select>
                   </label>
               
@@ -157,6 +143,7 @@
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script src="script.js"></script>
     <script>
       $(document).foundation();
     </script>
