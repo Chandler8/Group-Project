@@ -1,4 +1,17 @@
 /* Why doesn't the CSS want to work? */
 
 /* Below color is just a test */
+body {
+    background-color: rgb(29, 28, 28);
+}
 
+. {
+    background-color: rgb(41, 39, 39);
+}
+
+h1 {
+    color: white;
+}
+p {
+    color: white;
+}
