@@ -28,7 +28,7 @@ async function tokenFunction() {
 
 // GET request to spotify sending my access token and asking for a playlist
 function getPlaylist(accessToken) {
-    selectedValue = $("#moodDropdown option:selected").val();
+    var selectedValue = $("#moodDropdown option:selected").val();
     queryURL = "https://api.spotify.com/v1/playlists/" + selectedValue + "/tracks?offset=0&limit=15";
     $.ajax({
         url: queryURL,
@@ -65,11 +65,17 @@ function populateSonglist(data, selectedValue) {
         trackInfo.append(songArtist);
 
         var songAlbum = $("<td>");
-        var albumImg = $("<img>")
-        albumImg.attr("src", data.items[i].track.album.images[1].url)
+        var albumImg = $("<img>");
+        // console.log(data.items[i].track.album.images)
+        if(data.items[i].track.album.images[1]){
+            albumImg.attr("src", data.items[i].track.album.images[1].url)
+            
+        }else{
+            albumImg.attr("src", "https://placehold.it/550x550")
+        }
+        
         songAlbum.append(albumImg);
         trackInfo.append(songAlbum);
-
         songList.append(trackInfo);
     }
     grabGif(selectedText);
@@ -77,22 +83,83 @@ function populateSonglist(data, selectedValue) {
 
 
 function grabGif(selectedText) {
-    var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=GLdAzfFBGkrBeUPV1mQCwztiE7bDfyV5&tag=" + selectedText;
+    console.log(selectedText)
 
-    // Perfoming an AJAX GET request to our queryURL
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    })
+    if(selectedText === "Songs Worth Checking Out"){
+        gifImage.attr("src", "https://media.giphy.com/media/5e3321JmUk848/giphy.gif");
+    }else{
 
+        var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=GLdAzfFBGkrBeUPV1mQCwztiE7bDfyV5&tag=" + selectedText;
+        
+        // Perfoming an AJAX GET request to our queryURL
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+        
         // After the data from the AJAX request comes back
         .then(function (response) {
-
+            
             // Saving the image_original_url property
             var imageUrl = response.data.image_original_url;
-
+            
             // Setting the gifImage src attribute to imageUrl
             gifImage.attr("src", imageUrl);
         });
+    }
 }
 
+(function listenForSpeech (){
+      
+      var speechRecognition = window.webkitSpeechRecognition
+      
+      var recognition = new speechRecognition()
+      
+      var content = '';
+    
+      //   indicate somehow that it is recording
+    // maybe change the button when clicked
+      recognition.onstart = function(){
+        //   instructions.text("Listening")
+        console.log("listening")
+      }
+
+    //   indicate that it is finished redcording, or go back to original state
+    // maybe change the button back to what it was originally
+      recognition.onspeechend = function(){
+          console.log("ended")
+      }
+
+      recognition.onerror = function(){
+          console.log("Didn't understand, Could you say your mood again please?")
+      }
+
+
+    //   I assume I could call a search function from here and pass it the parameter content
+    //   to be used to search for the users mood.
+      recognition.onresult = function(event){
+          var current = event.resultIndex;
+
+          var transcript = event.results[current][0].transcript;
+          console.log(transcript)
+
+          content += transcript
+          
+          console.log(content)
+          if(content == "happy"){
+            selectedText = "happy"
+            tokenFunction();
+          }
+        //   textbox.text(content)
+      }
+
+      $(".micBtn").click(function(event){
+          console.log("clicked")
+          content = '';
+          if(content.length){
+              content += '';
+
+          }
+          recognition.start();
+      })
+})();
