@@ -1,17 +1,53 @@
-/* Why doesn't the CSS want to work? */
 
-/* Below color is just a test */
 body {
-    background-color: rgb(29, 28, 28);
+    background-color: rgb(27, 27, 29);
+    font-family: 'Montserrat', sans-serif;
+
 }
 
-. {
-    background-color: rgb(41, 39, 39);
+.row {
+    background-color: rgb(27, 27, 29);
 }
 
-h1 {
-    color: white;
+.callout {
+    color: rgb(27, 27, 29);
 }
-p {
+
+#title {
+    margin: 20px;
+}
+#title-insta {
+    background-color: rgb(44, 44, 48);;
+}
+
+.off-canvas-content {
+    float: right;
+    border: none;
+}
+
+.text-display {
+    color: rgb(209, 207, 207);
+    font-family: 'Montserrat', sans-serif;
+}
+.stack {
+    opacity: 50%;
+}
+
+
+#moodDropdown {
+    border-radius: 7px;
+    background-color: rgb(44, 44, 48);
+    border: none;
+}
+
+.callout{
+    border: none;
+}
+.thumbnail {
+    border:none;
+}
+.micBtn {
+    background-color: white;
     color: white;
+    border-color: white;
 }
