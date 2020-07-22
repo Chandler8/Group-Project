@@ -3,13 +3,11 @@ var clientSecret = '574cc1ada15544f78f9964403b0bd9be';
 var gifImage = $("#currentGif");
 var moodsArr = ["happy", "sad", "energetic", "aggressive", "relaxed", "sleepy", "classy", "indifferent"];
 
-
-
+// Main function
 function GetSelectedTextValue() {
     var selectedText = $("#moodDropdown option:selected").text();
     var selectedValue = $("#moodDropdown option:selected").val();
     tokenFunction();
-
 
     // POST request to spotify asking for an access token
     async function tokenFunction() {
@@ -41,7 +39,6 @@ function GetSelectedTextValue() {
             }
         });
     }
-
 
     function populateSonglist(data, selectedValue) {
 
@@ -80,13 +77,11 @@ function GetSelectedTextValue() {
         grabGif();
     }
 
-
     function grabGif() {
 
         if (selectedText === "Songs Worth Checking Out") {
             gifImage.attr("src", "https://media.giphy.com/media/5e3321JmUk848/giphy.gif");
         } else {
-
             var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=GLdAzfFBGkrBeUPV1mQCwztiE7bDfyV5&tag=" + selectedText;
 
             // Perfoming an AJAX GET request to our queryURL
@@ -108,61 +103,39 @@ function GetSelectedTextValue() {
     }
 
     function listenForSpeech() {
-
-        var speechRecognition = window.webkitSpeechRecognition
-
-        var recognition = new speechRecognition()
-
-        var content = '';
+        var speechRecognition = window.webkitSpeechRecognition;
+        var recognition = new speechRecognition();
 
         $(".micBtn").click(function (event) {
-            content = '';
-            if (content.length) {
-                content += '';
-
-            }
             recognition.start();
         })
 
         //   indicate somehow that it is recording
         // maybe change the button when clicked
         recognition.onstart = function () {
+            $(".micBtn").val("Listening");
             console.log("listening")
         }
 
-        //   indicate that it is finished redcording, or go back to original state
-        // maybe change the button back to what it was originally
+        //   indicate that it is finished redcording
         recognition.onspeechend = function () {
+            $(".micBtn").val("Submit");
             console.log("ended")
         }
 
-        recognition.onerror = function () {
-            console.log("Didn't understand, Could you say your mood again please?")
-        }
-
-
-        //   I assume I could call a search function from here and pass it the parameter content
-        //   to be used to search for the users mood.
         recognition.onresult = function (event) {
             var current = event.resultIndex;
 
             var transcript = event.results[current][0].transcript;
-            //   console.log(transcript)
-
-            content += transcript
-
-            console.log(content)
-            selectedText = content;
-            selectedValue = $("#" + content).val();
+            selectedText = transcript;
+            selectedValue = $("#" + transcript).val();
 
             if (moodsArr.includes(selectedText)) {
-
                 tokenFunction(selectedText);
             } else {
                 console.log("Try Again!")
             }
         }
-
     };
     listenForSpeech();
 };
