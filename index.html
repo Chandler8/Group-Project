@@ -9,16 +9,14 @@
   <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.css">
   <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
   <link rel="stylesheet" href="/assets/queries.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-
-
 </head>
 
 <body>
 
 
   <!-- Left sided sticky bar that will house the most recently generated playlist -->
-
   <div class="off-canvas-wrapper">
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
 
@@ -42,19 +40,20 @@
           </table>
         </div>
       </div>
-      <div class="off-canvas-content" data-off-canvas-content>
+
+      <div class="off-canvas-content" style="max-width: 1150px" data-off-canvas-content>
         <div class="title-bar hide-for-large">
           <div class="title-bar-left">
             <button class="menu-icon" type="button" data-open="my-info"></button>
-            <span class="title-bar-title">Mike Mikerson</span>
+            <span class="title-bar-title" class="text-display">Poop</span>
           </div>
         </div>
 
         <!-- Main header that contains instructions and the submit button with the selected mood -->
-        <div class="callout primary">
-          <div class="row column">
-            <h1>Hello and Welcome to Musical Mood Generator!</h1>
-            <p class="lead">Please use the options at the bottom of the page to choose your current mood from the
+        <div class="callout-primary">
+          <div class="row column" id="title-inst">
+            <h1 class="text-display" id="title">Hello and Welcome to Musical Mood Generator!</h1>
+            <p class="text-display" class="lead" >Please use the options at the bottom of the page to choose your current mood from the
               dropdown menu.
               Your given mood will then randomly generate a personalized playlist from Spotify that corresponds
               to your given mood. You will also find the playlist comes with
@@ -64,14 +63,14 @@
         </div>
 
 
-        <div class="row">
+        <div class="row mt-10 mb-10" id="instruction">
           <div class="medium-6 columns">
-            <h3>Instructions</h3>
-            <p>Selet a mood option from the dropdown menu on your right!
+            <h3 class="text-display">Instructions</h3>
+            <p class="text-display">Selet a mood option from the dropdown menu on your right!
             </p>
 
-            <p>Below you will find links to the Repository and APIs</p>
-            <ul class="menu">
+            <p class="text-display">Below you will find links to the Repository and APIs</p>
+            <ul class="menu" class="text-display">
               <li><a href="https://github.com/Chandler8/Group-Project"><i class="fa fa-github" aria-hidden="true"></i>
                   Github Repository</a></li>
               <li><a href="https://www.spotify.com/us/"><i class="fa fa-spotify" aria-hidden="true"></i>
@@ -81,7 +80,7 @@
             </ul>
           </div>
           <div class="medium-6 columns">
-            <label>Select Mood
+            <label class="text-display">Select Mood
               <select id="moodDropdown" onchange="GetSelectedTextValue(this)">
                 <option value="2LTA5Jxg19elESWNFYCnij">Choose Your Mood</option>
                 <option value="1h90L3LP8kAJ7KGjCV2Xfd">Happy</option>
@@ -94,8 +93,10 @@
                 <option value="1hY0i2y7ByRgFkcLHZZdVN">Indifferent</option>
               </select>
             </label>
+            <button type="button" class="micBtn" class="btn btn-primary"id="button-addon2"><i class="fa fa-microphone"></i></button>
+            
 
-            <input type="submit" class="button expanded" value="Submit">
+
           </div>
         </div>
 
@@ -103,35 +104,35 @@
         <div class="row small-up-2 medium-up-3 large-up-4">
           <div class="column">
             <img class="thumbnail" src="https://placehold.it/550x550">
-            <h5>My Site</h5>
+            <h5 class="text-display">My Site</h5>
           </div>
           <div class="column">
             <img class="thumbnail" src="https://placehold.it/550x550">
-            <h5>My Site</h5>
+            <h5 class="text-display">My Site</h5>
           </div>
           <div class="column">
             <img class="thumbnail" src="https://placehold.it/550x550">
-            <h5>My Site</h5>
+            <h5 class="text-display">My Site</h5>
           </div>
           <div class="column">
             <img class="thumbnail" src="https://placehold.it/550x550">
-            <h5>My Site</h5>
+            <h5 class="text-display">My Site</h5>
           </div>
           <div class="column">
             <img class="thumbnail" src="https://placehold.it/550x550">
-            <h5>My Site</h5>
+            <h5 class="text-display">My Site</h5>
           </div>
           <div class="column">
             <img class="thumbnail" src="https://placehold.it/550x550">
-            <h5>My Site</h5>
+            <h5 class="text-display">My Site</h5>
           </div>
           <div class="column">
             <img class="thumbnail" src="https://placehold.it/550x550">
-            <h5>My Site</h5>
+            <h5 class="text-display">My Site</h5>
           </div>
           <div class="column">
             <img class="thumbnail" src="https://placehold.it/550x550">
-            <h5>My Site</h5>
+            <h5 class="text-display">My Site</h5>
           </div>
         </div>
 
