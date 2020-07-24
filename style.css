@@ -39,7 +39,7 @@ body {
 }
 
 /* Controls the left side bar */
-.stack {
+.table-scroll {
     opacity: 80%;
     width: 40%;
 }
@@ -69,4 +69,23 @@ body {
 
 #medium-6-columns {
     opacity: 40%;
+}
+
+h5{
+    color: rgb(209, 207, 207);
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Affects every other color of the table */
+#songList {
+   background-color: lightslategray;
+}
+
+/* Element that says listen now on Spotify */
+#spotLink {
+    margin: auto;
+}
+
+.thead{
+    width: 410px;
 }
