@@ -55,7 +55,18 @@
         <div class="callout-primary">
           <div class="row column" id="title-inst">
             <h1 class="text-display" id="title">Hello and Welcome to Musical Mood Generator!</h1>
-            <p class="text-display" class="lead" >Please use the options at the bottom of the page to choose your current mood from the
+            <div class="reveal" id="exampleModal1" data-reveal>
+              <div id="my_camera"></div>
+              <input class="takeSnapshot" type=button value="Take Snapshot" onClick="take_snapshot()">
+
+              <div id="results"></div>
+              <button class="close-button" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <p><button class="button modalBtn" data-open="exampleModal1">Click me for a modal</button></p>
+            <p class="text-display" class="lead">Please use the options at the bottom of the page to choose your current
+              mood from the
               dropdown menu.
               Your given mood will then randomly generate a personalized playlist from Spotify that corresponds
               to your given mood. You will also find the playlist comes with
@@ -95,8 +106,9 @@
                 <option id="indifferent" value="1hY0i2y7ByRgFkcLHZZdVN">Indifferent</option>
               </select>
             </label>
-            <button type="button" class="micBtn" class="btn btn-primary"id="button-addon2"><i class="fa fa-microphone"></i></button>
-            
+            <button type="button" class="micBtn" class="btn btn-primary" id="button-addon2"><i
+                class="fa fa-microphone"></i></button>
+
 
 
 
@@ -141,7 +153,7 @@
           </div>
         </div>
 
-        <hr>
+
 
 
 
@@ -153,6 +165,7 @@
 
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+  <script type="text/javascript" src="webcam.min.js"></script>
   <script src="script.js"></script>
   <script>
     $(document).foundation();
