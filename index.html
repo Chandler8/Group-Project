@@ -56,8 +56,10 @@
           <div class="row column" id="title-inst">
             <h1 class="text-display" id="title">Hello and Welcome to Musical Mood Generator!</h1>
             <div class="reveal" id="exampleModal1" data-reveal>
-              <div id="my_camera"></div>
-              <input class="takeSnapshot" type=button value="Take Snapshot" onClick="take_snapshot()">
+              <video id="video" width="320" height="240" autoplay muted></video>
+              <button id="button">detect</button>
+              <h3 id="waiting"></h3>
+              
 
               <div id="results"></div>
               <button class="close-button" data-close aria-label="Close modal" type="button">
@@ -165,7 +167,7 @@
 
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
-  <script type="text/javascript" src="webcam.min.js"></script>
+  <script src="face-api.min.js"></script>
   <script src="script.js"></script>
   <script>
     $(document).foundation();
