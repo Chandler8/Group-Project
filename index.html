@@ -2,169 +2,63 @@
 <html class="no-js" lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Musical Mood Generator!</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Musical Mood Generator!</title>
 
-  <!-- All Style Sheets -->
+    <!-- All Style Sheets -->
 
-  <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.css">
-  <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
-  <link rel="stylesheet" href="/assets/queries.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <link rel="stylesheet" href="/assets/queries.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
-  <!-- Beginning of main wrapper UI -->
-  <div class="wrapper">
-    <div class="wrapper-inner">
-
-      <div class="position-left reveal-for-large" id="my-info">
-    
-        <!-- Title -->
-          <div class="callout-primary">
-            <div class="row column" id="title-inst">
-              <h1 class="text-display" id="title">Hello and Welcome to Musical Mood Generator!</h1>
-              <div class="reveal" id="exampleModal1" data-reveal>
-                <video id="video" width="320" height="240" autoplay muted></video>
-                <button id="button">detect</button>
-                <h3 id="waiting"></h3>
-                
-                <!-- Main directions -->
-                <div id="results"></div>
-                <button class="close-button" data-close aria-label="Close modal" type="button">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-
-              <!-- Modal for Face ID API -->
-              <p><button class="button modalBtn" data-open="exampleModal1">Click me for a modal</button></p>
-              <p class="text-display" class="lead">Please use the options at the bottom of the page to choose your current
-                mood from the
-                dropdown menu.
-                Your given mood will then randomly generate a personalized playlist from Spotify that corresponds
-                to your given mood. You will also find the playlist comes with
-                a handy-dandy GIF that similiarly corresponds to your mood. You can save up to 8 playlists,
-                happy generating!</p>
-            </div>
-          </div>
-
-          <!-- Instructions -->
-          <div class="row mt-10 mb-10" id="instruction">
-            <div class="medium-6 columns">
-              <h3 class="text-display">Instructions</h3>
-              <p class="text-display">Selet a mood option from the dropdown menu on your right!
-              </p>
-  
-              <!-- Linked Sites -->
-              <p class="text-display">Below you will find links to the Repository and APIs</p>
-              <ul class="menu" class="text-display">
-                <li><a href="https://github.com/Chandler8/Group-Project"><i class="fa fa-github" aria-hidden="true"></i>
-                    Github Repository</a></li>
-                <li><a href="https://www.spotify.com/us/"><i class="fa fa-spotify" aria-hidden="true"></i>
-                    Spofity</a></li>
-                <li><a href="https://giphy.com/"><i class="fa fa-picture-o" aria-hidden="true"></i>
-                    GIPHY</a></li>
-              </ul>
-            </div>
-
-            <!-- Mood dropdown -->
-            <div class="medium-6 columns">
-              <label class="text-display">Select Mood
-                <select id="moodDropdown" onchange="GetSelectedTextValue(this)">
-                  <option value="2LTA5Jxg19elESWNFYCnij">Songs Worth Checking Out</option>
-                  <option id="happy" value="1h90L3LP8kAJ7KGjCV2Xfd">Happy</option>
-                  <option id="sad" value="7ABD15iASBIpPP5uJ5awvq">Sad</option>
-                  <option id="energetic" value="2lmcuXNkjYOoQeXvwqvvFT">Energetic</option>
-                  <option id="aggressive" value="0kbIVraS3Xa7FhvAb9KSGe">Aggressive</option>
-                  <option id="relaxed" value="4vQ0ixS6GKuNV0xMmjfk9j">Relaxed</option>
-                  <option id="sleepy" value="6uMZkWBIIY3v1U3G9Stoi4">Sleepy</option>
-                  <option id="classy" value="50Tl9aaCBX9Ys5kc0DbJeH">Classy</option>
-                  <option id="indifferent" value="1hY0i2y7ByRgFkcLHZZdVN">Indifferent</option>
-                </select>
-              </label>
-              
-              <!-- Microphone API -->
-              <button type="button" class="micBtn" class="btn btn-primary" id="button-addon2"><i
-                  class="fa fa-microphone"></i></button>
-                  
-              <input type="submit" class="micBtn button expanded" value="Submit">
-  
-            </div>
-          </div>
-  
-          <!-- Section containing the previously generated playlists and GIFS -->
-          <div class="row small-up-2 medium-up-3 large-up-4">
-            <div class="column">
-              <img class="thumbnail" src="https://placehold.it/550x550">
-              <h5 class="text-display">My Mood</h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" src="https://placehold.it/550x550">
-              <h5 class="text-display">My Mood</h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" src="https://placehold.it/550x550">
-              <h5 class="text-display">My Mood</h5>
-            </div>
-            <div class="column">
-              <img class="thumbnail" src="https://placehold.it/550x550">
-              <h5 class="text-display">My Mood</h5>
-            </div>
-            
-          </div>
-          <br>
-
-          <!-- Beginning of Spotify API Playlist -->
-          <div class="row columns">
-         
-            <!-- GIF to go here -->
-          <img class="thumbnail" id="currentGif" src="https://placehold.it/550x350">
-         
-          <!-- Songs generated here -->
-          <h5 id="playlistName"></h5>
-          <a id="spotLink" href=""></a>
-          <table class="stack">
-            <thead>
-              <tr>
-                <th width="150">Song</th>
-                <th width="150">Artist</th>
-                <th width="150">Album</th>
-              </tr>
-            </thead>
-            <tbody id="songList"></tbody>
-          </table>
+    <header class="top-bar">
+        <div class="top-bar-left">
+            <ul class="dropdown menu" data-dropdown-menu>
+                <li class="menu-text">Menu</li>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="past-mood.html">Past Moods</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
         </div>
+    </header>
+
+    <!-- Beginning of main wrapper UI -->
+    <div class="wrapper">
+        <div class="wrapper-inner">
+
+            <div class="position-left reveal-for-large" id="my-info">
+
+                <!--Home Page-->
+                <div class="callout-primary">
+                    <div class="row column" id="title-inst" style="text-align: center;">
+                        <h1 class="text-display" id="title">A playlist made for your mood.</h1>
+                        <div id="bodyContent" class="hero-image">
+                            <div class="reveal" id="exampleModal1" data-reveal>
+                                <video id="video" width="320" height="240" autoplay muted></video>
+                                <button id="button">detect</button>
+                                <h3 id="waiting"></h3>
+                            </div>
+                        </div>
+                        <a href="home.html" id="getStarted" class="button round">Get Started</a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-
-
-      <!-- Ability to open a compressed menu via a smaller browser -->
-      <div class="off-canvas-content" style="max-width: 2080px" data-off-canvas-content>
-        <div class="title-bar hide-for-large">
-          <div class="title-bar-left">
-            <button class="menu-icon" type="button" data-open="my-info"></button>
-            <span class="title-bar-title" class="text-display">Poopv2</span>
-          </div>
-        </div>
-        
-        <!-- End of UI menu features -->
-
-      </div>
     </div>
-  </div>
-</div>
 
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
-  <script src="face-api.min.js"></script>
-  <script src="script.js"></script>
-  <script>
-    $(document).foundation();
-  </script>
-  <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script src="face-api.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        $(document).foundation();
+    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
