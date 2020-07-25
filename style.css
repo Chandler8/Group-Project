@@ -19,30 +19,21 @@ body {
 }
 
 #title {
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 #title-insta {
     background-color: rgb(44, 44, 48);;
 }
 
-/* Center container */
-.off-canvas-content {
-    float: right;
-    border: none;
-    
-    
-}
+
 
 .text-display {
     color: rgb(209, 207, 207);
     font-family: 'Montserrat', sans-serif;
 }
 
-/* Controls the left side bar */
-.table-scroll {
-    opacity: 80%;
-    width: 40%;
-}
+
 
 /* Mood selector */
 #moodDropdown {
@@ -68,7 +59,7 @@ body {
 }
 
 #medium-6-columns {
-    opacity: 40%;
+    opacity: 100%;
 }
 
 h5{
@@ -88,4 +79,8 @@ h5{
 
 .thead{
     width: 410px;
+}
+
+#row-column {
+    opacity: 40%;
 }
