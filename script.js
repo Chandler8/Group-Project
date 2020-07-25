@@ -8,6 +8,8 @@ function GetSelectedTextValue() {
     var selectedText = $("#moodDropdown option:selected").text();
     var selectedValue = $("#moodDropdown option:selected").val();
     tokenFunction();
+    getMoodHistory();
+    var h=0;
 
     // POST request to spotify asking for an access token
     async function tokenFunction() {
@@ -98,7 +100,34 @@ function GetSelectedTextValue() {
 
                     // Setting the gifImage src attribute to imageUrl
                     gifImage.attr("src", imageUrl);
+                    
+                    setHistory(imageUrl);
                 });
+        }
+        getMoodHistory();
+    }
+
+    function setHistory(imageUrl) {
+        var oldMoods = JSON.parse(localStorage.getItem('moodsArray')) || [];
+
+        var moodStorage = {
+            name: selectedText,
+            gif: imageUrl,
+            timeStamp: "(7/25/2020)"
+        };
+
+        oldMoods.unshift(moodStorage);
+
+        localStorage.setItem('moodsArray', JSON.stringify(oldMoods));
+
+    }
+
+    function getMoodHistory() {
+        var moodStorage = JSON.parse(localStorage.getItem("moodsArray"));
+        for (var i = 0; i < moodStorage.length; i++) {
+            $(".thumbnail"+(i+1)).attr("src", moodStorage[i].gif);
+            $(".text-display"+(i+1)).text(moodStorage[i].name);
+            $(".date-display"+(i+1)).text(moodStorage[i].timeStamp);
         }
     }
 
@@ -191,6 +220,7 @@ function GetSelectedTextValue() {
                 }
                 pleaseWait.text("Your mood: " + selectedText);
                 selectedValue = $("#" + selectedText).val();
+                console.log(selectedText);
                 tokenFunction(selectedText);
             };
         })
