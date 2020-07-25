@@ -138,37 +138,62 @@ function GetSelectedTextValue() {
         }
     };
     listenForSpeech();
-};
 
-$(".modalBtn").click(function(){
-    videoSetUp()
-})
-
-function videoSetUp() {
-    Webcam.set({
-        width: 320,
-        height: 240,
-        image_format: 'jpeg',
-        jpeg_quality: 90
-    });
-    Webcam.attach('#my_camera');
-
-    $(".takeSnapshot").click(function(){
-        take_snapshot();
+    $(".modalBtn").click(function () {
+        faceRecog()
     })
 
-    // <!Code to handle taking the snapshot and displaying it locally 
-    function take_snapshot() {
+    function faceRecog() {
+        var video = document.getElementById('video')
 
-        // take snapshot and get image data
-        Webcam.snap(function (data_uri) {
-            // display results in page
-            console.log(data_uri);
-            document.getElementById('results').innerHTML =
-                '<img src="' + data_uri + '"/>';
-        });
+        Promise.all([
+            faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
+            faceapi.nets.faceExpressionNet.loadFromUri('/models')
+        ]).then(startVideo)
+
+        function startVideo() {
+            navigator.getUserMedia(
+                { video: {} },
+                stream => video.srcObject = stream,
+                err => console.error(err)
+            )
+        }
+
+        video.addEventListener('play', () => {
+            var canvas = faceapi.createCanvasFromMedia(video)
+            var displaySize = { width: video.width, height: video.height }
+            faceapi.matchDimensions(canvas, displaySize)
+
+
+
+            var button = document.getElementById("button")
+            button.addEventListener("click", detect)
+
+            async function detect() {
+                var pleaseWait = $("#waiting");
+                pleaseWait.text("Please Wait...")
+                video.pause();
+                var detections = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions()).withFaceExpressions();
+
+                var mostMood = Object.keys(detections.expressions).reduce(function (a, b) { return detections.expressions[a] > detections.expressions[b] ? a : b });
+                pleaseWait.text("Your mood: " + mostMood)
+                if(mostMood === "angry"){
+                    selectedText = "aggressive"
+                } else if(mostMood === "neutral"){
+                    selectedText = "relaxed"
+                } else if(mostMood === "disgusted"){
+                    selectedText = "classy"
+                }else if(mostMood === "surprised"){
+                    selectedText = "energetic"
+                }
+                else {
+                    selectedText = mostMood;
+                }
+                pleaseWait.text("Your mood: " + selectedText);
+                selectedValue = $("#" + selectedText).val();
+                tokenFunction(selectedText);
+            };
+        })
     }
-}
-
-
+};
 GetSelectedTextValue();
