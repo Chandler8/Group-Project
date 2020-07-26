@@ -36,6 +36,19 @@ h1 {
     color: rgb(209, 207, 207);
 }
 
+.reveal {
+    text-align: center;
+    background-color: rgb(48, 52, 54);
+}
+
+.faceButton {
+    background-color: rgb(209, 207, 207);
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-weight: bold;
+}
+
 #my_camera{
     width: 320px;
     height: 240px;
