@@ -125,9 +125,23 @@ function GetSelectedTextValue() {
     function getMoodHistory() {
         var moodStorage = JSON.parse(localStorage.getItem("moodsArray"));
         for (var i = 0; i < moodStorage.length; i++) {
-            $(".thumbnail"+(i+1)).attr("src", moodStorage[i].gif);
-            $(".text-display"+(i+1)).text(moodStorage[i].name);
-            $(".date-display"+(i+1)).text(moodStorage[i].timeStamp);
+            if(i > 7){
+                return;
+            } else {
+                var historyRow = $(".small-up-2");
+                var div = $("<div>").addClass("column");
+                var img = $("<img>").addClass("thumbnail" + i);
+                $(".thumbnail"+i).attr("src", moodStorage[i].gif);
+                div.append(img);
+                var text = $("<h5>").addClass("text-display" + i);
+                $(".text-display"+i).text(moodStorage[i].name);
+                div.append(text);
+                var date = $("<h5>").addClass("date-display" + i);
+                $(".date-display"+i).text(moodStorage[i].timeStamp);
+                div.append(date);
+                historyRow.append(div);
+
+            }
         }
     }
 
