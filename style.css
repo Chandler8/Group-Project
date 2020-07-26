@@ -81,9 +81,22 @@ h1 {
     border: none;
 }
 .micBtn {
-    background-color: white;
-    color: white;
-    border-color: white;
+    margin-top: 20px;
+    margin-left: 260px;
+    background-color: rgb(24, 26, 27);
+    color: rgb(232, 230, 227);
+    border-top-color: rgb(48, 52, 54);
+    border-right-color: rgb(48, 52, 54);
+    border-bottom-color: rgb(48, 52, 54);
+    border-left-color: rgb(48, 52, 54);
+   
+}
+
+#speak {
+    text-align: center;
+    padding-top: 10px;
+    
+    /* margin-left: 160px; */
 }
 
 .selectedText {
@@ -101,7 +114,8 @@ h5{
 
 /* Affects every other color of the table */
 #songList {
-   background-color: lightslategray;
+    color: rgb(232, 230, 227);
+    background-color: rgb(24, 26, 27);
 }
 
 /* Element that says listen now on Spotify */
@@ -109,10 +123,77 @@ h5{
     margin: auto;
 }
 
-.thead{
-    width: 410px;
+/* Affects only the song, artist, and album on top */
+thead {
+    color: rgb(232, 230, 227);
+    background-color: rgb(24, 26, 27);
+    border-top-color: rgb(48, 52, 54);
+    border-right-color: rgb(48, 52, 54);
+    border-bottom-color: rgb(48, 52, 54);
+    border-left-color: rgb(48, 52, 54);
 }
 
-#row-column {
-    opacity: 40%;
+
+
+
+tbody {
+    background-color: rgb(24, 26, 27);
+    border-top-color: rgb(48, 52, 54);
+    border-right-color: rgb(48, 52, 54);
+    border-bottom-color: rgb(48, 52, 54);
+    border-left-color: rgb(48, 52, 54);
 }
+
+
+caption, tbody td, tbody th {
+    font-weight: 900;
+    color: rgb(232, 230, 227);
+    border-top-color: rgb(48, 52, 54);
+    border-right-color: rgb(48, 52, 54);
+    border-bottom-color: rgb(48, 52, 54);
+    border-left-color: rgb(48, 52, 54);
+    padding: 3rem 6rem 3rem;
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgb(19, 19, 19);
+}
+
+.button {
+    margin-top: 20px;
+    margin-left: 245px;
+    background-color: rgb(24, 26, 27);
+    color: rgb(232, 230, 227);
+    /* border-top-color: rgb(48, 52, 54);
+    border-right-color: rgb(48, 52, 54);
+    border-bottom-color: rgb(48, 52, 54);
+    border-left-color: rgb(48, 52, 54); */
+    
+}
+
+#links {
+    padding-top: 20px;
+}
+
+
+h3 {
+    text-align: center;
+    color: rgb(209, 207, 207);
+    font-family: 'Montserrat', sans-serif;
+}
+
+p3 {
+    color: rgb(209, 207, 207);
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+h7 {
+    color: rgb(209, 207, 207);
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: line-through;
+}
+/* tfoot td, tfoot th, thead td, thead th {
+    padding: .5rem .625rem .625rem;
+    font-weight: 700;
+} */

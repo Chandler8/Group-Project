@@ -43,21 +43,14 @@
                 <h3 id="waiting"></h3>
                 
                 <!-- Main directions -->
-                <div id="results"></div>
-                <button class="close-button" data-close aria-label="Close modal" type="button">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-
-              <!-- Modal for Face ID API -->
-              <p><button class="button modalBtn" data-open="exampleModal1">Click me for a modal</button></p>
-              <p class="text-display" class="lead">Please use the options at the bottom of the page to choose your current
+            
+              <!-- <p class="text-display" class="lead">Please use the options at the bottom of the page to choose your current
                 mood from the
                 dropdown menu.
                 Your given mood will then randomly generate a personalized playlist from Spotify that corresponds
                 to your given mood. You will also find the playlist comes with
                 a handy-dandy GIF that similiarly corresponds to your mood. You can save up to 8 moods,
-                happy generating!</p>
+                happy generating!</p> -->
             </div>
           </div>
 
@@ -65,12 +58,12 @@
           <div class="row mt-10 mb-10" id="instruction">
             <div class="medium-6 columns">
               <h3 class="text-display">Instructions</h3>
-              <p class="text-display">Selet a mood option from the dropdown menu on your right!
+              <p class="text-display">Selet a mood option from the dropdown menu on your right! 
               </p>
   
               <!-- Linked Sites -->
               <p class="text-display">Below you will find links to the Repository and APIs</p>
-              <ul class="menu" class="text-display">
+              <ul class="menu" id="links" class="text-display">
                 <li><a href="https://github.com/Chandler8/Group-Project"><i class="fa fa-github" aria-hidden="true"></i>
                     Github Repository</a></li>
                 <li><a href="https://www.spotify.com/us/"><i class="fa fa-spotify" aria-hidden="true"></i>
@@ -95,23 +88,65 @@
                   <option id="indifferent" value="1hY0i2y7ByRgFkcLHZZdVN">Indifferent</option>
                 </select>
               </label>
+
+              
+
+              <label>
+                <p class="text-display" class="lead" id="speak">
+                  To use Voice Recognition please click below:
+                </p>
+
+              </label>
               
               <!-- Microphone API -->
-              <button type="button" class="micBtn" class="btn btn-primary" id="button-addon2"><i
-                  class="fa fa-microphone"></i></button>
+              <button type="button" class="micBtn" class="btn btn-primary" id="button-addon2">
+                <i class="fa fa-microphone fa-5x"></i></button>
+                <br>
                   
-              <input type="submit" class="micBtn button expanded" value="Submit">
+              <!-- <input type="submit" class="micBtn button expanded" value="Submit"> -->
   
             </div>
+            
           </div>
           <br>
+          
+          
+        </div>
 
-          <!-- Beginning of Spotify API Playlist -->
-          <div class="row columns">
+          <div class="row mt-10 mb-10" id="instruction">
+            <div class="medium-6 columns">
          
             <!-- GIF to go here -->
+           
           <img class="thumbnail" id="currentGif" src="https://placehold.it/550x350">
-         
+        </div>
+
+          
+        <!-- Modal for Face ID API -->
+          <div class="medium-6 columns">
+          <div id="results">
+                <button class="close-button" id="micBtn" data-close aria-label="Close modal" type="button">
+                  <!-- <span aria-hidden="true">&times;</span> -->
+                </button>
+
+                <label>
+                  <p class="text-display" class="lead" id="speak">
+                    To use Face ID please click below:
+                  </p>
+  
+                </label>
+
+              <p><button class="button modalBtn" data-open="exampleModal1"><i class="fa fa-id-badge fa-5x"></i></button></p>
+              
+            </div>
+              </div>
+            </div>
+
+
+
+             <!-- Beginning of Spotify API Playlist -->
+
+        <div class="row columns">
           <!-- Songs generated here -->
           <h5 id="playlistName"></h5>
           <a id="spotLink" href=""></a>
