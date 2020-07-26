@@ -13,9 +13,14 @@ body {
     background-size: cover; 
   }
 
-*.top-bar, .top-bar-left, ul{
+*.top-bar, .top-bar-left {
     background-color: rgb(19, 19, 19) !important; 
     color: lightslategrey;
+}
+
+#top-nav {
+    background-color: rgb(19, 19, 19) !important; 
+    font-family: 'Montserrat', sans-serif;
 }
 
 h1 {

@@ -82,7 +82,7 @@ function GetSelectedTextValue() {
     function grabGif() {
 
         if (selectedText === "Songs Worth Checking Out") {
-            gifImage.attr("src", "https://media.giphy.com/media/5e3321JmUk848/giphy.gif");
+            gifImage.attr("src", "https://media.giphy.com/media/Ai6jGrjxJAp4Y8vVeF/giphy.gif");
         } else {
             var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=GLdAzfFBGkrBeUPV1mQCwztiE7bDfyV5&tag=" + selectedText;
 
