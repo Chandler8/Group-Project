@@ -45,6 +45,7 @@ function GetSelectedTextValue() {
 
         $("#playlistName").text(selectedText.charAt(0).toUpperCase() + selectedText.slice(1));
         $("#spotLink").attr("href", "https://open.spotify.com/playlist/" + selectedValue);
+        $("#spotLink").attr("target", "_blank");
         $("#spotLink").text("Listen Now On Spotify!");
 
         var songList = $("#songList")
