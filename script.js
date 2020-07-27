@@ -9,7 +9,7 @@ function GetSelectedTextValue() {
     var selectedValue = $("#moodDropdown option:selected").val();
     tokenFunction();
     getMoodHistory();
-    var h=0;
+
 
     // POST request to spotify asking for an access token
     async function tokenFunction() {
@@ -64,7 +64,7 @@ function GetSelectedTextValue() {
 
             var songAlbum = $("<td>");
             var albumImg = $("<img>");
-            // console.log(data.items[i].track.album.images)
+
             if (data.items[i].track.album.images[1]) {
                 albumImg.attr("src", data.items[i].track.album.images[1].url)
 
@@ -80,7 +80,6 @@ function GetSelectedTextValue() {
     }
 
     function grabGif() {
-
         if (selectedText === "Songs Worth Checking Out") {
             gifImage.attr("src", "https://media.giphy.com/media/1cMSWoZlxhO8w/giphy.gif");
         } else {
@@ -100,12 +99,12 @@ function GetSelectedTextValue() {
 
                     // Setting the gifImage src attribute to imageUrl
                     gifImage.attr("src", imageUrl);
-                    
+
                     setHistory(imageUrl);
                 });
         }
-        getMoodHistory();
     }
+    getMoodHistory();
 
     function setHistory(imageUrl) {
         var oldMoods = JSON.parse(localStorage.getItem('moodsArray')) || [];
@@ -125,22 +124,21 @@ function GetSelectedTextValue() {
     function getMoodHistory() {
         var moodStorage = JSON.parse(localStorage.getItem("moodsArray"));
         for (var i = 0; i < moodStorage.length; i++) {
-            if(i > 7){
+            if (i > 7) {
                 return;
             } else {
                 var historyRow = $(".small-up-2");
                 var div = $("<div>").addClass("column");
                 var img = $("<img>").addClass("thumbnail" + i);
-                $(".thumbnail"+i).attr("src", moodStorage[i].gif);
+                $(".thumbnail" + i).attr("src", moodStorage[i].gif);
                 div.append(img);
                 var text = $("<h5>").addClass("text-display" + i);
-                $(".text-display"+i).text(moodStorage[i].name);
+                $(".text-display" + i).text(moodStorage[i].name);
                 div.append(text);
                 var date = $("<h5>").addClass("date-display" + i);
-                $(".date-display"+i).text(moodStorage[i].timeStamp);
+                $(".date-display" + i).text(moodStorage[i].timeStamp);
                 div.append(date);
                 historyRow.append(div);
-
             }
         }
     }
@@ -157,13 +155,13 @@ function GetSelectedTextValue() {
         // maybe change the button when clicked
         recognition.onstart = function () {
             $(".micBtn").val("Listening");
-            console.log("listening")
+            console.log("listening");
         }
 
         //   indicate that it is finished redcording
         recognition.onspeechend = function () {
             $(".micBtn").val("Submit");
-            console.log("ended")
+            console.log("ended");
         }
 
         recognition.onresult = function (event) {
@@ -176,18 +174,19 @@ function GetSelectedTextValue() {
             if (moodsArr.includes(selectedText)) {
                 tokenFunction(selectedText);
             } else {
-                console.log("Try Again!")
+                console.log("Try Again!");
             }
         }
     };
     listenForSpeech();
 
     $(".modalBtn").click(function () {
-        faceRecog()
+        faceRecog();
     })
 
     function faceRecog() {
-        var video = document.getElementById('video')
+        var alreadyRan = false;
+        var video = document.getElementById('video');
 
         Promise.all([
             faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
@@ -203,40 +202,57 @@ function GetSelectedTextValue() {
         }
 
         video.addEventListener('play', () => {
-            var canvas = faceapi.createCanvasFromMedia(video)
-            var displaySize = { width: video.width, height: video.height }
-            faceapi.matchDimensions(canvas, displaySize)
+            if (alreadyRan === true) {
+                return;
+            } else {
+
+                var canvas = faceapi.createCanvasFromMedia(video);
+                var displaySize = { width: video.width, height: video.height };
+                faceapi.matchDimensions(canvas, displaySize);
 
 
+                var button = document.getElementById("button");
+                button.addEventListener("click", detectMood);
 
-            var button = document.getElementById("button")
-            button.addEventListener("click", detect)
+                async function detectMood() {
+                    if (alreadyRan === true) {
+                        return;
+                    } else {
+                        var pleaseWait = $("#waiting");
+                        pleaseWait.text("Please Wait...");
+                        video.pause();
+                        alreadyRan = true
+                        var detections = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions()).withFaceExpressions();
 
-            async function detect() {
-                var pleaseWait = $("#waiting");
-                pleaseWait.text("Please Wait...")
-                video.pause();
-                var detections = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions()).withFaceExpressions();
+                        // get most pronounced expression and assign it to a mood
+                        var mostMood = Object.keys(detections.expressions).reduce(function (a, b) { return detections.expressions[a] > detections.expressions[b] ? a : b });
+                        pleaseWait.text("Your mood: " + mostMood)
+                        if (mostMood === "angry") {
+                            selectedText = "aggressive"
+                        } else if (mostMood === "neutral") {
+                            selectedText = "relaxed"
+                        } else if (mostMood === "disgusted") {
+                            selectedText = "classy"
+                        } else if (mostMood === "surprised") {
+                            selectedText = "energetic"
+                        }
+                        else {
+                            selectedText = mostMood;
+                        }
 
-                var mostMood = Object.keys(detections.expressions).reduce(function (a, b) { return detections.expressions[a] > detections.expressions[b] ? a : b });
-                pleaseWait.text("Your mood: " + mostMood)
-                if(mostMood === "angry"){
-                    selectedText = "aggressive"
-                } else if(mostMood === "neutral"){
-                    selectedText = "relaxed"
-                } else if(mostMood === "disgusted"){
-                    selectedText = "classy"
-                }else if(mostMood === "surprised"){
-                    selectedText = "energetic"
+                        // stop the camera
+                        var mediaStream = video.srcObject;
+                        var tracks = mediaStream.getTracks();
+                        tracks.forEach(track => track.stop());
+
+                        // add the mood text
+                        pleaseWait.text("Your mood: " + selectedText);
+                        selectedValue = $("#" + selectedText).val();
+                        console.log(selectedText);
+                        tokenFunction(selectedText);
+                    };
                 }
-                else {
-                    selectedText = mostMood;
-                }
-                pleaseWait.text("Your mood: " + selectedText);
-                selectedValue = $("#" + selectedText).val();
-                console.log(selectedText);
-                tokenFunction(selectedText);
-            };
+            }
         })
     }
 };
