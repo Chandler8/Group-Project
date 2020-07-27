@@ -8,7 +8,6 @@ function GetSelectedTextValue() {
     var selectedText = $("#moodDropdown option:selected").text();
     var selectedValue = $("#moodDropdown option:selected").val();
     tokenFunction();
-    getMoodHistory();
 
 
     // POST request to spotify asking for an access token
@@ -102,9 +101,9 @@ function GetSelectedTextValue() {
 
                     setHistory(imageUrl);
                 });
+            }
         }
-    }
-    getMoodHistory();
+        // getMoodHistory();
 
     function setHistory(imageUrl) {
         var oldMoods = JSON.parse(localStorage.getItem('moodsArray')) || [];
@@ -112,7 +111,7 @@ function GetSelectedTextValue() {
         var moodStorage = {
             name: selectedText,
             gif: imageUrl,
-            timeStamp: "(7/25/2020)"
+            timeStamp: moment().format('MMMM Do YYYY, h:mm:ss a')
         };
 
         oldMoods.unshift(moodStorage);
@@ -121,27 +120,27 @@ function GetSelectedTextValue() {
 
     }
 
-    function getMoodHistory() {
-        var moodStorage = JSON.parse(localStorage.getItem("moodsArray"));
-        for (var i = 0; i < moodStorage.length; i++) {
-            if (i > 7) {
-                return;
-            } else {
-                var historyRow = $(".small-up-2");
-                var div = $("<div>").addClass("column");
-                var img = $("<img>").addClass("thumbnail" + i);
-                $(".thumbnail" + i).attr("src", moodStorage[i].gif);
-                div.append(img);
-                var text = $("<h5>").addClass("text-display" + i);
-                $(".text-display" + i).text(moodStorage[i].name);
-                div.append(text);
-                var date = $("<h5>").addClass("date-display" + i);
-                $(".date-display" + i).text(moodStorage[i].timeStamp);
-                div.append(date);
-                historyRow.append(div);
-            }
-        }
-    }
+    // function getMoodHistory() {
+    //     var moodStorage = JSON.parse(localStorage.getItem("moodsArray"));
+    //     for (var i = 0; i < moodStorage.length; i++) {
+    //         if (i > 7) {
+    //             return;
+    //         } else {
+    //             var historyRow = $(".small-up-2");
+    //             var div = $("<div>").addClass("column");
+    //             var img = $("<img>").addClass("thumbnail" + i);
+    //             $(".thumbnail" + i).attr("src", moodStorage[i].gif);
+    //             div.append(img);
+    //             var text = $("<h5>").addClass("text-display" + i);
+    //             $(".text-display" + i).text(moodStorage[i].name.charAt(0).toUpperCase() + moodStorage[i].name.slice(1));
+    //             div.append(text);
+    //             var date = $("<h5>").addClass("date-display" + i);
+    //             $(".date-display" + i).text(moodStorage[i].timeStamp);
+    //             div.append(date);
+    //             historyRow.append(div);
+    //         }
+    //     }
+    // }
 
     function listenForSpeech() {
         var speechRecognition = window.webkitSpeechRecognition;
@@ -155,12 +154,16 @@ function GetSelectedTextValue() {
         // maybe change the button when clicked
         recognition.onstart = function () {
             $(".micBtn").val("Listening");
+            $("#micImg").removeClass("fa fa-microphone fa-5x");
+            $("#micImg").addClass("fa fa-microphone-slash fa-5x")
             console.log("listening");
         }
 
         //   indicate that it is finished redcording
         recognition.onspeechend = function () {
             $(".micBtn").val("Submit");
+            $("#micImg").removeClass("fa fa-microphone-slash fa-5x")
+            $("#micImg").addClass("fa fa-microphone fa-5x");
             console.log("ended");
         }
 
@@ -255,5 +258,6 @@ function GetSelectedTextValue() {
             }
         })
     }
+    // getMoodHistory();
 };
 GetSelectedTextValue();

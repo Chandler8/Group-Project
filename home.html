@@ -25,25 +25,25 @@
         <li><a href="about.html" id="top-nav">About Us </a></li>
       </ul>
     </div>
-</header>
+  </header>
 
   <!-- Beginning of main wrapper UI -->
   <div class="wrapper">
     <div class="wrapper-inner">
 
       <div class="position-left reveal-for-large" id="my-info">
-    
+
         <!-- Title -->
-          <div class="callout-primary">
-            <div class="row column" id="title-inst">
-              <h1 class="text-display" id="title">Welcome to Musical Mood Generator</h1>
-              <div class="reveal" id="exampleModal1" data-reveal>
-                <video id="video" width="550" height="360" autoplay muted></video>
-                <button class="faceButton" id="button">Check Your Mood</button>
-                <h3 id="waiting"></h3>
-                
-                <!-- Main directions -->
-            
+        <div class="callout-primary">
+          <div class="row column" id="title-inst">
+            <h1 class="text-display" id="title">Welcome to Musical Mood Generator</h1>
+            <div class="reveal" id="exampleModal1" data-reveal>
+              <video id="video" width="550" height="360" autoplay muted></video>
+              <button class="faceButton" id="button">Check Your Mood</button>
+              <h3 id="waiting"></h3>
+
+              <!-- Main directions -->
+
               <!-- <p class="text-display" class="lead">Please use the options at the bottom of the page to choose your current
                 mood from the
                 dropdown menu.
@@ -58,9 +58,9 @@
           <div class="row mt-10 mb-10" id="instruction">
             <div class="medium-6 columns">
               <h3 class="text-display">Instructions</h3>
-              <p class="text-display">Selet a mood option from the dropdown menu on your right! 
+              <p class="text-display">Selet a mood option from the dropdown menu on your right!
               </p>
-  
+
               <!-- Linked Sites -->
               <p class="text-display">Below you will find links to the Repository and APIs</p>
               <ul class="menu" id="links" class="text-display">
@@ -89,7 +89,7 @@
                 </select>
               </label>
 
-              
+
 
               <label>
                 <p class="text-display" class="lead" id="speak">
@@ -97,54 +97,55 @@
                 </p>
 
               </label>
-              
+
               <!-- Microphone API -->
               <button type="button" class="micBtn" class="btn btn-primary" id="button-addon2">
-                <i class="fa fa-microphone fa-5x"></i></button>
-                <br>
-                  
+                <i id="micImg" class="fa fa-microphone fa-5x"></i></button>
+              <br>
+
               <!-- <input type="submit" class="micBtn button expanded" value="Submit"> -->
-  
+
             </div>
-            
+
           </div>
           <br>
-          
-          
+
+
         </div>
 
-          <div class="row mt-10 mb-10" id="instruction">
-            <div class="medium-6 columns">
-         
-            <!-- GIF to go here -->
-           
-          <img class="thumbnail" id="currentGif" src="https://placehold.it/550x350">
-        </div>
-
-          
-        <!-- Modal for Face ID API -->
+        <div class="row mt-10 mb-10" id="instruction">
           <div class="medium-6 columns">
-          <div id="results">
-                <button class="close-button" id="micBtn" data-close aria-label="Close modal" type="button">
-                  <!-- <span aria-hidden="true">&times;</span> -->
-                </button>
 
-                <label>
-                  <p class="text-display" class="lead" id="speak">
-                    To use Face ID please click below:
-                  </p>
-  
-                </label>
+            <!-- GIF to go here -->
 
-              <p><button class="button modalBtn" data-open="exampleModal1"><i class="fa fa-id-badge fa-5x"></i></button></p>
-              
+            <img class="thumbnail" id="currentGif" src="https://placehold.it/550x350">
+          </div>
+
+
+          <!-- Modal for Face ID API -->
+          <div class="medium-6 columns">
+            <div id="results">
+              <button class="close-button" id="micBtn" data-close aria-label="Close modal" type="button">
+                <!-- <span aria-hidden="true">&times;</span> -->
+              </button>
+
+              <label>
+                <p class="text-display" class="lead" id="speak">
+                  To use Face ID please click below:
+                </p>
+
+              </label>
+
+              <p><button class="button modalBtn" data-open="exampleModal1"><i class="fa fa-id-badge fa-5x"></i></button>
+              </p>
+
             </div>
-              </div>
-            </div>
+          </div>
+        </div>
 
 
 
-             <!-- Beginning of Spotify API Playlist -->
+        <!-- Beginning of Spotify API Playlist -->
 
         <div class="row columns">
           <!-- Songs generated here -->
@@ -161,15 +162,16 @@
             <tbody id="songList"></tbody>
           </table>
         </div>
-        </div>
       </div>
     </div>
   </div>
-</div>
-<!-- End of UI menu features -->
+  </div>
+  </div>
+  <!-- End of UI menu features -->
 
-<!-- Functionality -->
+  <!-- Functionality -->
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
   <script src="face-api.min.js"></script>
