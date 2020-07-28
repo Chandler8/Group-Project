@@ -4,7 +4,7 @@ body {
 
 }
 .hero-image {
-    background-image: url("coolbaby.jpg"); 
+    background-image: url("../images/coolbaby.jpg"); 
     background-color: #cccccc; 
     margin-top: 50px;
     height: 400px; 
