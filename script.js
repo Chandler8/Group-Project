@@ -2,8 +2,9 @@ var clientId = 'e385e97bbf0c45b2a800391010d7d594';
 var clientSecret = '574cc1ada15544f78f9964403b0bd9be';
 var gifImage = $("#currentGif");
 var moodsArr = ["happy", "sad", "energetic", "aggressive", "relaxed", "sleepy", "classy", "indifferent"];
+var face = true;
 
-// Main function
+// Main function for dropdown menu selection
 function GetSelectedTextValue() {
     var selectedText = $("#moodDropdown option:selected").text();
     var selectedValue = $("#moodDropdown option:selected").val();
@@ -41,6 +42,7 @@ function GetSelectedTextValue() {
         });
     }
 
+    // Fill in songlist table
     function populateSonglist(data, selectedValue) {
 
         $("#playlistName").text(selectedText.charAt(0).toUpperCase() + selectedText.slice(1));
@@ -79,70 +81,40 @@ function GetSelectedTextValue() {
         grabGif();
     }
 
+    // Get and apply the appropriate gif 
     function grabGif() {
         if (selectedText === "Songs Worth Checking Out") {
             gifImage.attr("src", "https://media.giphy.com/media/1cMSWoZlxhO8w/giphy.gif");
         } else {
             var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=GLdAzfFBGkrBeUPV1mQCwztiE7bDfyV5&tag=" + selectedText;
 
-            // Perfoming an AJAX GET request to our queryURL
             $.ajax({
                 url: queryURL,
                 method: "GET"
             })
-
-                // After the data from the AJAX request comes back
                 .then(function (response) {
-
-                    // Saving the image_original_url property
                     var imageUrl = response.data.image_original_url;
-
-                    // Setting the gifImage src attribute to imageUrl
                     gifImage.attr("src", imageUrl);
-
                     setHistory(imageUrl);
                 });
-            }
         }
-        // getMoodHistory();
+    }
 
+    // Set mood, date, and gif in local storage
     function setHistory(imageUrl) {
         var oldMoods = JSON.parse(localStorage.getItem('moodsArray')) || [];
 
         var moodStorage = {
             name: selectedText,
             gif: imageUrl,
-            timeStamp: moment().format('MMMM Do YYYY, h:mm:ss a')
+            timeStamp: moment().format('MMMM Do YYYY, h:mm a')
         };
 
         oldMoods.unshift(moodStorage);
-
         localStorage.setItem('moodsArray', JSON.stringify(oldMoods));
-
     }
 
-    // function getMoodHistory() {
-    //     var moodStorage = JSON.parse(localStorage.getItem("moodsArray"));
-    //     for (var i = 0; i < moodStorage.length; i++) {
-    //         if (i > 7) {
-    //             return;
-    //         } else {
-    //             var historyRow = $(".small-up-2");
-    //             var div = $("<div>").addClass("column");
-    //             var img = $("<img>").addClass("thumbnail" + i);
-    //             $(".thumbnail" + i).attr("src", moodStorage[i].gif);
-    //             div.append(img);
-    //             var text = $("<h5>").addClass("text-display" + i);
-    //             $(".text-display" + i).text(moodStorage[i].name.charAt(0).toUpperCase() + moodStorage[i].name.slice(1));
-    //             div.append(text);
-    //             var date = $("<h5>").addClass("date-display" + i);
-    //             $(".date-display" + i).text(moodStorage[i].timeStamp);
-    //             div.append(date);
-    //             historyRow.append(div);
-    //         }
-    //     }
-    // }
-
+    // Voice recognition functionality
     function listenForSpeech() {
         var speechRecognition = window.webkitSpeechRecognition;
         var recognition = new speechRecognition();
@@ -151,8 +123,7 @@ function GetSelectedTextValue() {
             recognition.start();
         })
 
-        //   indicate somehow that it is recording
-        // maybe change the button when clicked
+        // Indicate that it is recording by changing the mic button when clicked
         recognition.onstart = function () {
             $(".micBtn").val("Listening");
             $("#micImg").removeClass("fa fa-microphone fa-5x");
@@ -160,7 +131,7 @@ function GetSelectedTextValue() {
             console.log("listening");
         }
 
-        //   indicate that it is finished redcording
+        // Indicate that it is finished redcording by changing the mic button back
         recognition.onspeechend = function () {
             $(".micBtn").val("Submit");
             $("#micImg").removeClass("fa fa-microphone-slash fa-5x")
@@ -168,6 +139,7 @@ function GetSelectedTextValue() {
             console.log("ended");
         }
 
+        // Recognize the mood spoken and submit it or throw an error
         recognition.onresult = function (event) {
             var current = event.resultIndex;
 
@@ -181,22 +153,29 @@ function GetSelectedTextValue() {
                 console.log("Try Again!");
             }
         }
-    };
+    }
     listenForSpeech();
 
-    $(".modalBtn").click(function () {
-        faceRecog();
-    })
+    // Keep the click event from being applied multiple times
+    if (face) {
+        $(".modalBtn").click(function () {
+            faceRecog();
+        })
+    }
+    face = false;
 
+    // Face expression recognition
     function faceRecog() {
         var alreadyRan = false;
         var video = document.getElementById('video');
 
+        // Load the models needed to find a face and read its facial expressions
         Promise.all([
             faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
             faceapi.nets.faceExpressionNet.loadFromUri('/models')
         ]).then(startVideo)
 
+        // Start the video streaming inside the modal
         function startVideo() {
             navigator.getUserMedia(
                 { video: {} },
@@ -205,60 +184,59 @@ function GetSelectedTextValue() {
             )
         }
 
+        // When the video starts playing get ready to detect the expression from the video
         video.addEventListener('play', () => {
-            if (alreadyRan === true) {
-                return;
-            } else {
+            var canvas = faceapi.createCanvasFromMedia(video);
+            var displaySize = { width: video.width, height: video.height };
+            faceapi.matchDimensions(canvas, displaySize);
 
-                var canvas = faceapi.createCanvasFromMedia(video);
-                var displaySize = { width: video.width, height: video.height };
-                faceapi.matchDimensions(canvas, displaySize);
+            // Detect expression when clicked
+            var button = document.getElementById("button");
+            button.addEventListener("click", detectMood);
 
+            async function detectMood() {
+                
+                // Make sure it doesnt run multiple times
+                if (alreadyRan) {
+                    return;
+                } else {
 
-                var button = document.getElementById("button");
-                button.addEventListener("click", detectMood);
+                    // Pause the video and let the user know it's detecting
+                    var pleaseWait = $("#waiting");
+                    pleaseWait.text("Please Wait...");
+                    video.pause();
+                    alreadyRan = true
+                    
+                    // get most pronounced expression and assign it to a mood
+                    var detections = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions()).withFaceExpressions();
+                    var mostMood = Object.keys(detections.expressions).reduce(function (a, b) { return detections.expressions[a] > detections.expressions[b] ? a : b });
+                    pleaseWait.text("Your mood: " + mostMood)
+                    if (mostMood === "angry") {
+                        selectedText = "aggressive"
+                    } else if (mostMood === "neutral") {
+                        selectedText = "relaxed"
+                    } else if (mostMood === "disgusted") {
+                        selectedText = "classy"
+                    } else if (mostMood === "surprised") {
+                        selectedText = "energetic"
+                    }
+                    else {
+                        selectedText = mostMood;
+                    }
 
-                async function detectMood() {
-                    if (alreadyRan === true) {
-                        return;
-                    } else {
-                        var pleaseWait = $("#waiting");
-                        pleaseWait.text("Please Wait...");
-                        video.pause();
-                        alreadyRan = true
-                        var detections = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions()).withFaceExpressions();
+                    // Stop the camera
+                    var mediaStream = video.srcObject;
+                    var tracks = mediaStream.getTracks();
+                    tracks.forEach(track => track.stop());
 
-                        // get most pronounced expression and assign it to a mood
-                        var mostMood = Object.keys(detections.expressions).reduce(function (a, b) { return detections.expressions[a] > detections.expressions[b] ? a : b });
-                        pleaseWait.text("Your mood: " + mostMood)
-                        if (mostMood === "angry") {
-                            selectedText = "aggressive"
-                        } else if (mostMood === "neutral") {
-                            selectedText = "relaxed"
-                        } else if (mostMood === "disgusted") {
-                            selectedText = "classy"
-                        } else if (mostMood === "surprised") {
-                            selectedText = "energetic"
-                        }
-                        else {
-                            selectedText = mostMood;
-                        }
-
-                        // stop the camera
-                        var mediaStream = video.srcObject;
-                        var tracks = mediaStream.getTracks();
-                        tracks.forEach(track => track.stop());
-
-                        // add the mood text
-                        pleaseWait.text("Your mood: " + selectedText);
-                        selectedValue = $("#" + selectedText).val();
-                        console.log(selectedText);
-                        tokenFunction(selectedText);
-                    };
-                }
+                    // Add the mood text and submit it
+                    pleaseWait.text("Your mood: " + selectedText);
+                    selectedValue = $("#" + selectedText).val();
+                    console.log(selectedText);
+                    tokenFunction(selectedText);
+                };
             }
         })
     }
-    // getMoodHistory();
 };
 GetSelectedTextValue();
