@@ -4,7 +4,7 @@ body {
 
 }
 .hero-image {
-    background-image: url("coolbaby.jpg"); 
+    background-image: url("../images/coolbaby.jpg"); 
     background-color: #cccccc; 
     margin-top: 50px;
     height: 400px; 
@@ -79,7 +79,9 @@ h1 {
     font-family: 'Montserrat', sans-serif;
 }
 
-
+#dropdownLabel {
+    font-size: 24px;
+}
 
 /* Mood selector */
 #moodDropdown {
@@ -125,6 +127,10 @@ h5{
     color: rgb(209, 207, 207);
     font-family: 'Montserrat', sans-serif;
 }
+#playlistName {
+    font-size: 24px;
+    font-weight: bold;
+}
 
 /* Affects every other color of the table */
 #songList {
@@ -151,7 +157,8 @@ thead {
 /* How can we get this to affect the placement of the table head items?!? */
 th {
     opacity: 80%;
-    
+    font-weight: bold;
+    font-size: 20px;
 }
 
 
@@ -166,7 +173,7 @@ tbody {
 }
 
 
-caption, tbody td, tbody th {
+caption, tbody td, tbody, th {
     font-weight: 900;
     color: rgb(232, 230, 227);
     border-top-color: rgb(48, 52, 54);
@@ -174,6 +181,8 @@ caption, tbody td, tbody th {
     border-bottom-color: rgb(48, 52, 54);
     border-left-color: rgb(48, 52, 54);
     padding: 3rem 6rem 3rem;
+    text-align: center !important;
+
 }
 
 tbody tr:nth-child(even) {
