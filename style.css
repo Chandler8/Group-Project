@@ -148,6 +148,13 @@ thead {
 }
 
 
+/* How can we get this to affect the placement of the table head items?!? */
+th {
+    opacity: 80%;
+    
+}
+
+
 
 
 tbody {
