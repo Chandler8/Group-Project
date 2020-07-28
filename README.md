@@ -62,10 +62,10 @@ then
 
 ## Images
 
-![](Photos/Index1.JPG)
+![](assets/images/Index1.JPG)
 
-![](Photos/Home1.JPG)
+![](assets/images/Home1.JPG)
 
-![](Photos/Home2.JPG)
+![](assets/images/Home2.JPG)
 
-![](Photos/Mood1.JPG)
+![](assets/images/Mood1.JPG)
