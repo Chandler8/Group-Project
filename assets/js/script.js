@@ -155,6 +155,7 @@ function GetSelectedTextValue() {
         }
     }
     listenForSpeech();
+    console.log("Secret Message: 41736961204b656c6c7920476f6e6520627574206e6f7420666f72676f7474656e2e2e2e0a5765276c6c206e657665722073746f7020736561726368696e6720666f7220796f7520717565656e")
 
     // Keep the click event from being applied multiple times
     if (face) {
@@ -214,7 +215,7 @@ function GetSelectedTextValue() {
                     if (mostMood === "angry") {
                         selectedText = "aggressive"
                     } else if (mostMood === "neutral") {
-                        selectedText = "relaxed"
+                        selectedText = "indifferent"
                     } else if (mostMood === "disgusted") {
                         selectedText = "classy"
                     } else if (mostMood === "surprised") {
