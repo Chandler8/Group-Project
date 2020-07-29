@@ -1,6 +1,6 @@
 # Musical Mood Generator
 
-An interactive web application that generates users a unique music playlist and GIF depending upon their mood via the Spotify and GIPHY APIs. The user can select one of eight differing moods via a number of ways including; a convenient dropdown menu, voice recognition, or face ID. The user can simply choose the desired outcome by selecting one of these eight moods that include; Happy, Sad, Energetic, Aggressive, Relaxed, Sleepy, Classy, or Indifferent. Upon choosing a mood, the website will generate the user a playlist and GIF that correlates to their mood. The link to this playlist will be clickable and will redirect the user to this playlist on Spotify for convenient listening. The user can find past moods with their corresponding GIF listed on the NAV bar at the top of the page. Within this window the user can view their past moods with an exact time stamp attatched to when they had this mood. To view the deployed application please follow this link: https://chandler8.github.io/Group-Project/
+An interactive web application that generates users a unique music playlist and GIF depending upon their mood via the Spotify and GIPHY APIs. The user can select one of eight differing moods via a number of ways including; a convenient dropdown menu, voice recognition, or face ID. The user can simply choose the desired outcome by selecting one of these eight moods that include; Happy, Sad, Energetic, Aggressive, Relaxed, Sleepy, Classy, or Indifferent. Upon choosing a mood, the website will generate the user a playlist and GIF that correlates to their mood. The link to this playlist will be clickable and will redirect the user to this playlist on Spotify for convenient listening. The user can find past moods with their corresponding GIF listed on the NAV bar at the top of the page. Within this window the user can view their past moods with an exact time stamp attatched to when they had this mood. All HTML, CSS, and JS successfully ran through validation services. To view the deployed application please follow this link: https://chandler8.github.io/Musical-Mood-Generator/
 
 ## Features
 
@@ -69,3 +69,5 @@ then
 ![](assets/images/Home2.JPG)
 
 ![](assets/images/Mood1.JPG)
+
+![](assets/images/About1.JPG)
