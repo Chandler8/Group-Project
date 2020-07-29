@@ -1,33 +1,34 @@
 body {
     background-color: rgb(27, 27, 29); 
     font-family: 'Montserrat', sans-serif;
-
 }
+
+/* Navigation bar */
+*.top-bar, .top-bar-left {
+  background-color: rgb(19, 19, 19) !important; 
+  color: lightslategrey;
+}
+#top-nav {
+    background-color: rgb(19, 19, 19) !important; 
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/*Title Page*/
 .hero-image {
-    background-image: url("../images/coolbaby.jpg"); 
+    background-image: url("../images/coolbaby.jpg"); /* Title Page Image on Index.html */
     background-color: #cccccc; 
     margin-top: 50px;
     height: 400px; 
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: cover; 
-  }
-
-*.top-bar, .top-bar-left {
-    background-color: rgb(19, 19, 19) !important; 
-    color: lightslategrey;
 }
-
-#top-nav {
-    background-color: rgb(19, 19, 19) !important; 
-    font-family: 'Montserrat', sans-serif;
-}
-
 h1 {
-    text-align: center;
+    text-align: center; /* Title Page Header */
 }
 #getStarted {
-    text-align: center;
+    text-align: center; /* Title Page Button */
     border-radius: 14px;
     padding: 20px;
     margin: 40px;
@@ -36,12 +37,12 @@ h1 {
     color: rgb(209, 207, 207);
 }
 
+
+
 .reveal {
     text-align: center;
     background-color: rgb(48, 52, 54);
 }
-
-
 .faceButton {
     background-color: rgb(209, 207, 207);
     padding: 5px;
@@ -49,7 +50,6 @@ h1 {
     border: 1px solid black;
     font-weight: bold;
 }
-
 #my_camera{
     width: 320px;
     height: 240px;
@@ -72,8 +72,7 @@ h1 {
     background-color: rgb(44, 44, 48);;
 }
 
-
-
+/* Apply styling to all text on html */
 .text-display {
     color: rgb(209, 207, 207);
     font-family: 'Montserrat', sans-serif;
@@ -162,8 +161,6 @@ th {
 }
 
 
-
-
 tbody {
     background-color: rgb(24, 26, 27);
     border-top-color: rgb(48, 52, 54);
@@ -205,24 +202,34 @@ tbody tr:nth-child(even) {
     padding-top: 20px;
 }
 
+/* About Us Page */
 
+/* Name */
 h3 {
     text-align: center;
     color: rgb(209, 207, 207);
     font-family: 'Montserrat', sans-serif;
 }
-
-p3 {
-    color: rgb(209, 207, 207);
+/* Bio */
+.aboutBio {
+    text-align: center;
+    color: rgb(170, 170, 170);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+}
+/* profile pictures */
+.profile {
+    text-align: center;
+    margin-left: 50px;
+}
+/* about us paragraphs */
+.aboutMe {
+    margin: 15px;
+    text-align: center;
+    color: rgb(170, 170, 170);
     font-family: 'Montserrat', sans-serif;
 }
 
-
-h7 {
-    color: rgb(209, 207, 207);
-    font-family: 'Montserrat', sans-serif;
-    text-decoration: line-through;
-}
 /* tfoot td, tfoot th, thead td, thead th {
     padding: .5rem .625rem .625rem;
     font-weight: 700;
