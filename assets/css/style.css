@@ -13,7 +13,6 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-
 /* Apply styling to all text on html */
 .text-display {
     color: rgb(209, 207, 207);
@@ -43,9 +42,7 @@ body {
 }
 
 
-
-/* Get Start Page Style */
-     
+/* Get Started Page Style */
 .hero-image { /*Baby Image */
     background-image: url("../images/coolbaby.jpg");
     background-color: #cccccc; 
@@ -65,25 +62,17 @@ body {
     color: rgb(209, 207, 207);
 }
 
-
-
 /* Home Page Style */
-.faceButton {
-    background-color: rgb(209, 207, 207);
-    padding: 5px;
-    border-radius: 10px;
-    border: 1px solid black;
-    font-weight: bold;
-}
-    /*Linked Sites*/
+
+/*Linked Sites*/
 #links {
     padding-top: 20px;
 }
 
+/* Mood selector */
 #dropdownLabel {
     font-size: 24px;
 }
-    /* Mood selector */
 #moodDropdown {
     border-radius: 7px;
     background-color: rgb(44, 44, 48);
@@ -92,7 +81,8 @@ body {
 .selectedText {
     color: ivory;
 }
-    /*Mic API Button*/
+
+/*Mic and face API Buttons*/
 .micBtn { 
     margin-top: 20px;
     margin-left: 260px;
@@ -103,7 +93,22 @@ body {
     border-bottom-color: rgb(48, 52, 54);
     border-left-color: rgb(48, 52, 54); 
 }
-     /*Two Coloumns*/
+/*Modal Button*/
+.button { 
+    margin-top: 20px;
+    margin-left: 245px;
+    background-color: rgb(24, 26, 27);
+    color: rgb(232, 230, 227);   
+}
+.faceButton {
+    background-color: rgb(209, 207, 207);
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-weight: bold;
+}
+
+/*Two Coloumns*/
 #medium-6-columns {
     opacity: 100%;
 }
@@ -114,15 +119,8 @@ body {
     text-align: center;
     padding-top: 10px;
 }
-    /*Modal Button*/
-.button { 
-    margin-top: 20px;
-    margin-left: 245px;
-    background-color: rgb(24, 26, 27);
-    color: rgb(232, 230, 227);   
-}
 
-    /*Spotify API Playlist*/
+/*Spotify API Playlist*/
 h5{ 
     color: rgb(209, 207, 207);
     font-family: 'Montserrat', sans-serif;
@@ -131,11 +129,13 @@ h5{
     font-size: 24px;
     font-weight: bold;
 }
-    /* Element that says listen now on Spotify */
+
+/* Element that says listen now on Spotify */
 #spotLink {
     margin: auto;
 }
-    /* Affects only the song, artist, and album on top */
+
+/* Affects only the song, artist, and album on top */
 thead {
     color: rgb(232, 230, 227);
     background-color: rgb(24, 26, 27);
@@ -144,13 +144,15 @@ thead {
     border-bottom-color: rgb(48, 52, 54);
     border-left-color: rgb(48, 52, 54);
 }
-    /* How can we get this to affect the placement of the table head items?!? */
+
+/* How can we get this to affect the placement of the table head items?!? */
 th {
     opacity: 80%;
     font-weight: bold;
     font-size: 20px;
 }
-    /* Affects every other color of the table */
+ 
+/* Affects every other color of the table */
 #songList {
     color: rgb(232, 230, 227);
     background-color: rgb(24, 26, 27);
@@ -176,32 +178,22 @@ caption, tbody td, tbody, th {
     text-align: center !important;
 }
 
-#my_camera{
-    width: 320px;
-    height: 240px;
-    border: 1px solid black;
-}
-
-
 /* About Us Page */
 h3 { /* Name */
     text-align: center;
     color: rgb(209, 207, 207);
     font-family: 'Montserrat', sans-serif;
 }
-
 .aboutBio { /* Bio */
     text-align: center;
     color: rgb(170, 170, 170);
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
 }
-
 .profile { /* profile pictures */
     text-align: center;
     margin-left: 50px;
 }
-
 .aboutMe { /* about us paragraphs */
     margin: 15px;
     text-align: center;
@@ -209,7 +201,3 @@ h3 { /* Name */
     font-family: 'Montserrat', sans-serif;
 }
 
-/* tfoot td, tfoot th, thead td, thead th {
-    padding: .5rem .625rem .625rem;
-    font-weight: 700;
-} */
