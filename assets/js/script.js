@@ -150,7 +150,7 @@ function GetSelectedTextValue() {
             if (moodsArr.includes(selectedText)) {
                 tokenFunction(selectedText);
             } else {
-                console.log("Try Again!");
+                console.log("Please Try Again!");
             }
         }
     }
